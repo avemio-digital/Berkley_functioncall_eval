@@ -143,6 +143,7 @@ local_inference_handler_map = {
     "deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct": DeepseekCoderHandler,
     "deepseek-ai/DeepSeek-V2-Chat-0628": DeepseekHandler,
     "deepseek-ai/DeepSeek-V2-Lite-Chat": DeepseekHandler,
+    "avemio/GRAG-LLAMA-3.1-8B-SFT-HESSIAN-AI": HermesHandler
 }
 
 # Deprecated/outdated models, no longer on the leaderboard
