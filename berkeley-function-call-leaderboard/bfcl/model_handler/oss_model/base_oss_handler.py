@@ -68,9 +68,11 @@ class OSSHandler(BaseHandler, EnforceOverrides):
 
         config = AutoConfig.from_pretrained(self.model_name_huggingface, trust_remote_code=True)
         if hasattr(config, "max_position_embeddings"):
-            self.max_context_length = config.max_position_embeddings
+            #self.max_context_length = config.max_position_embeddings
+            self.max_context_length = 15000
         elif self.tokenizer.model_max_length is not None:
-            self.max_context_length = self.tokenizer.model_max_length
+            #self.max_context_length = 15000 #self.tokenizer.model_max_length
+            self.max_context_length = 15000
         else:
             if not hasattr(self, "max_context_length"):
                 raise ValueError(
@@ -93,6 +95,8 @@ class OSSHandler(BaseHandler, EnforceOverrides):
                     "--gpu-memory-utilization",
                     str(gpu_memory_utilization),
                     "--trust-remote-code",
+                    "--max-model-len",
+                    "15000",
                 ],
                 stdout=subprocess.PIPE,  # Capture stdout
                 stderr=subprocess.PIPE,  # Capture stderr
@@ -125,6 +129,8 @@ class OSSHandler(BaseHandler, EnforceOverrides):
                     "--attention-backend",
                     str(backend_choice),
                     "--trust-remote-code",
+                    "--max-model-len",
+                    "15000",
                 ],
                 stdout=subprocess.PIPE,  # Capture stdout
                 stderr=subprocess.PIPE,  # Capture stderr
